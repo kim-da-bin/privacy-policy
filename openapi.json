@@ -1,0 +1,70 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Physiognomy API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://physiognomy-03e526bc32be.herokuapp.com"
+    }
+  ],
+  "paths": {
+    "/generate": {
+      "post": {
+        "operationId": "generateText",
+        "summary": "Generate text using GPT-4 model",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "prompt": {
+                    "type": "string",
+                    "example": "Hello, how are you?"
+                  }
+                },
+                "required": ["prompt"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "example": "As an artificial intelligence, I don't have feelings, but I'm here and ready to help you. What can I assist you with today?"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
